@@ -1,0 +1,58 @@
+<!--
+  Generated template for the CartPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>购物车</ion-title>
+    <ion-buttons end>
+      <button ion-button color="danger" (tap)="edit()"><span *ngIf="!isEdit">编辑</span><span *ngIf="isEdit">完成</span></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="cart_spinner" *ngIf="list.length<=0 && hasData" style="text-align: center;position: absolute;top: 50%; right: 0px; left: 0px;margin-top: -12px;">
+    <ion-spinner></ion-spinner>
+  </div>
+  <div *ngIf="list.length<=0 && !hasData" style="text-align: center;position: absolute;top: 50%; right: 0px; left: 0px;margin-top: -12px;">没有数据</div>
+  <div *ngIf="list.length>0">
+    <dl class="cart_list" *ngFor="let item of list">
+      <dt>
+        <ion-checkbox color="danger" [(ngModel)]="item.checked" (ionChange)="toggleChecked()"></ion-checkbox>
+        <img src="{{config.apiUrl}}/{{item.product_pic}}" alt="">
+
+      </dt>
+      <dd>
+        <h2 class="cart_title">{{item.product_title}}</h2>
+        <div class="cart_info">
+          <div class="price">{{item.product_price}}元</div>
+          <div class="num">
+            <div class="input_left" (tap)='recnum(item)'>-</div>
+            <div class="input_center">
+              <input type="number" [(ngModel)]="item.product_num">
+            </div>
+            <div class="input_right" (tap)="addnum(item)">+</div>
+          </div>
+        </div>
+      </dd>
+    </dl>
+  </div>
+</ion-content>
+<ion-footer *ngIf="list.length>0">
+  <ion-toolbar>
+    <div class="all_price" (tap)="allchecked()">
+      <ion-checkbox color="danger" [(ngModel)]="isAllChecked" disabled></ion-checkbox>全选
+      <strong *ngIf="!isEdit">合计：{{allPrice}} </strong>
+    </div>
+    <ion-buttons end *ngIf="!isEdit">
+      <button ion-button outline color="danger" (tap)="pay()">去结算</button>
+    </ion-buttons>
+    <ion-buttons end *ngIf="isEdit">
+      <button ion-button outline color="danger" (tap)="del()">删除</button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,6 @@
+page-addadress {
+    .list-ios[inset]>.item:last-child,
+    .list-ios[inset]>.item-wrapper:last-child .item{
+        border-bottom: 1px solid #c8c7cc;
+    }
+}

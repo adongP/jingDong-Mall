@@ -1,0 +1,26 @@
+page-about {
+    ul{
+        list-style: none;
+        padding:0px;
+        margin:0px;
+    }
+    .cate_content{
+        height:100%;
+        width:100%;
+        display: flex;
+        .cate_left{
+            width:100px;
+            height:100%;
+            overflow-y: auto;
+            li{
+                line-height: 3;
+                border-bottom: 1px solid #efefef;
+            }
+        }
+        .cate_right{
+            flex: 1;
+            height: 100%;
+            overflow-y: auto;
+        }
+    }
+}

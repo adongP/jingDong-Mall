@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="cate_content">
+    <div class="cate_left">
+      <ul>
+        <li *ngFor="let item of leftList;let key=index" [ngClass]="{active: flag}" (click)="getright(item['_id'])">{{item.title}}</li>
+      </ul>
+    </div>
+    <div class="cate_right">
+      <ion-row style="border-left: 1px solid #eee;border-top: 1px solid #eee;">
+        <ion-col col-4 *ngFor="let item of rightList" [navPush]="ProductlistPage" [navParams]="{'cid':item['_id']}" style="border:1px solid #eee;margin-left: -1px; margin-top: -1px;">
+          <img src="{{config.apiUrl}}/{{item.pic}}" alt="">
+          <p>{{item.title}}</p>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

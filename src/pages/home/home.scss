@@ -1,0 +1,34 @@
+page-home {
+  ion-slides {
+    height: 130px;
+    ion-slide{
+        height:130px;
+        width:100%;
+        img{
+            height:130px;
+            width:100%;
+        }
+    }
+  }
+//   推荐商品
+ion-scroll{
+    width:100%;
+    height:120px;
+    
+}
+ul{
+    list-style: none;
+    overflow: hidden;
+    margin:0px;
+    padding:0px;
+    li{
+        width:80px;
+        float:left;
+        height:120px;
+        margin-right:10px;
+        p{
+            padding:0px  5px;
+        }
+    }
+}
+}

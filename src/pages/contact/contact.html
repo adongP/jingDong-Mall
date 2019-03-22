@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Contact
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="login" *ngIf="isLogin">
+    <div class="userimg">
+      <img src="assets/imgs/slide/slide01.png" alt="">
+    </div>
+    <div class="login_reg">
+      <button ion-button [navPush]='LoginPage'>登录</button>
+      <button ion-button [navPush]='RegisterPage'>注册</button>
+    </div>
+  </div>
+  <div class="login" *ngIf="!isLogin">
+    <ion-list>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/imgs/slide/slide01.png" alt="">
+        </ion-avatar>
+        <h3>{{userinfo.username}}</h3>
+        <p>普通会会员</p>
+        <ion-icon name="ios-arrow-forward" item-end [navPush]='PersonalPage'></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-list inset>
+    <ion-item-divider></ion-item-divider>
+    <ion-item>
+      <ion-icon name="ionic" item-start></ion-icon>
+      全部订单
+    </ion-item>
+    <ion-item>
+      <ion-icon name="leaf" item-start></ion-icon>
+      全部订单
+    </ion-item>
+    <ion-item>
+      <ion-icon name="home" item-start></ion-icon>
+      全部订单
+    </ion-item>
+  </ion-list>
+</ion-content>

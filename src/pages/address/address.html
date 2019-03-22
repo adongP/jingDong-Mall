@@ -1,0 +1,39 @@
+<!--
+  Generated template for the AddressPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>收货地址</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <div *ngIf="addresslist<=0"  style="position: absolute; width: 100%;text-align: center;top: 50%; margin-top: -12px;color: #666;font-size: 2rem;">
+    还没有地址
+  </div> -->
+  <ion-list>
+    <ion-item *ngFor="let item of addresslist;let key = index" (press)="delAddress(key,item._id)">
+      <ion-checkbox color="danger" checked="true" *ngIf="item.default_address"></ion-checkbox>
+      <ion-label (tap)="changeAddress(item._id)">
+        <h3>
+          <span>{{item.name}}</span>
+          <span>{{item.phone}}</span>
+        </h3>
+        <p>
+          {{item.address}}
+        </p>
+        </ion-label>
+        <button ion-button clear item-end (tap)="editAddress(item)">
+          <ion-icon name="ios-create-outline"></ion-icon>
+        </button>
+      
+    </ion-item>
+
+  </ion-list>
+</ion-content>
+<ion-footer padding>
+  <button ion-button block color="danger" [navPush]="AddadressPage">新增地址</button>
+</ion-footer>

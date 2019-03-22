@@ -1,0 +1,65 @@
+<!--
+  Generated template for the ProductinfPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>详情</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="tab">
+    <ion-segment-button value="product">商品</ion-segment-button>
+    <ion-segment-button value="inf">详情</ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="tab">
+    <div *ngSwitchCase="'product'">
+      <img style="width:100%;" src="{{config.apiUrl}}/{{productlist.pic}}" alt="">
+      <div style="border-bottom: 10px solid #eeee;padding:0px 16px;">
+        <h4 style="margin-bottom: 0px;">{{productlist.title}}</h4>
+        <p style="margin-top:0px; color:#999;">{{productlist.sub_title}}</p>
+        <p>特价：<span style="color:red;font-size:2rem;;">{{productlist.price}}</span> 原价：<span style="text-decoration: line-through;">{{productlist.old_price}}</span></p>
+      </div>
+      <div class="attr" #myattr>
+        <div padding *ngFor="let attr of productlist.attr">
+          <strong>{{attr.cate}}:</strong>
+          <span *ngFor="let item of attr.list;let key=index" [ngClass]="{'active':key==0}" (tap)="chooseAttr(item)">{{item}}</span>
+        </div>
+      </div>
+
+      <div class="buynum" padding>
+        <div>购买数量：</div>
+        <div>
+          <button (tap)="recnum()">-</button>
+          <input type="number" [(ngModel)]="num">
+          <button (tap)="addnum()">+</button>
+        </div>
+      </div>
+
+
+    </div>
+    <div *ngSwitchCase="'inf'">
+      <div [innerHTML]="productlist.content"></div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div style="display: flex; align-items: center; height:4rem;">
+      <div class="cart" [navPush]='CartPage'>
+        <ion-icon name="cart"></ion-icon>
+        <p>cart</p>
+        <ion-badge>{{cartnum}}</ion-badge>
+      </div>
+      <div class="addcart" (tap)='addCart()'>
+        加购
+      </div>
+      <div class="buy" color="danger">
+        即买
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

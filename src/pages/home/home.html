@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <!-- <ion-title>Home</ion-title> -->
+    <ion-searchbar (tap)="getItems()"></ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-slides pager loop='true' autoplay='3000' *ngIf="recList.length>0">
+
+    <ion-slide *ngFor="let item of foucsList">
+      <img src="{{config.apiUrl}}/{{item.pic}}" alt="">
+    </ion-slide>
+  </ion-slides>
+  <div class="title">精品推荐</div>
+  <div class="slide_product">
+    <ion-scroll scrollX="true">
+      <ul [ngStyle]="{'width': listW}">
+        <li *ngFor="let item of recList" [navPush]='ProductinfPage' [navParams]="{'id':item._id}">
+          <!-- {{item}} -->
+          <img src="{{config.apiUrl}}/{{item.pic}}" alt="">
+          <p>{{item.title}}</p>
+        </li>
+      </ul>
+    </ion-scroll>
+  </div>
+  <div class=" title">猜你喜欢
+  </div>
+  <div class="index_product">
+    <ion-row>
+      <ion-col col-6 *ngFor="let item of lickList" [navPush]='ProductinfPage' [navParams]="{'id':item._id}">
+        <img src="{{config.apiUrl}}/{{item.s_pic}}" alt="">
+        <p>{{item.title}}</p>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

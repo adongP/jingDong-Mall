@@ -1,0 +1,25 @@
+page-registersign {
+  .sign_page {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    margin-bottom: 20px;
+
+    input {
+      flex: 1;
+      height: inherit;
+      padding:0px 5px;
+    }
+
+    .timer {
+      width: 10rem;
+      background: #efefef;
+      border: 1px solid #ddd;
+      text-align: center;
+      height: inherit;
+      line-height: 3rem;
+      border-radius: .4rem;
+      margin-left: 2px;
+    }
+  }
+}

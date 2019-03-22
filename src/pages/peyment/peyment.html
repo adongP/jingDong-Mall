@@ -1,0 +1,35 @@
+<!--
+  Generated template for the PeymentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>选择支付方式</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list radio-group inset>
+    <ion-list-header>
+      选择支付方式
+    </ion-list-header>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="/assets/imgs/slide/slide01.png" alt="">
+      </ion-avatar>
+      <ion-label>微信支付(暂未开通)</ion-label>
+      <ion-radio value="微信"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="/assets/imgs/slide/slide02.png" alt="">
+      </ion-avatar>
+      <ion-label>支付宝支付</ion-label>
+      <ion-radio value="支付宝"></ion-radio>
+    </ion-item>
+    <ion-item></ion-item>
+  </ion-list>
+  <button ion-button block color="danger">支付</button>
+</ion-content>

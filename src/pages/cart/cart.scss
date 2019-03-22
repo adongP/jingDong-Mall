@@ -1,0 +1,86 @@
+page-cart {
+
+  .cart_list {
+    display: flex;
+    margin: 0px;
+    padding: 0px 16px;
+    border-bottom: 1px solid #ddd;
+
+    dt {
+      width: 10rem;
+      //   height: 10rem;
+      padding: 1rem 0px;
+      display: flex;
+      align-items: center;
+
+      ion-checkbox {
+        width: 2rem;
+        height: 1.8rem;
+        margin-right: .5rem;
+      }
+
+      img {
+        flex: 1;
+        width: 6rem;
+        height: 6rem;
+      }
+    }
+
+    dd {
+      flex: 1;
+
+      .cart_title {
+        font-size: 1.4rem;
+      }
+
+      .cart_info {
+        display: flex;
+        align-items: center;
+
+        .price {
+          flex: 1;
+        }
+
+        .num {
+          width: 10rem;
+          display: flex;
+          align-items: center;
+
+          .input_left,
+          .input_right {
+            width: 2.8rem;
+            height: 2.8rem;
+            border: 1px solid #eee;
+            background: #eee;
+            line-height: 2.8rem;
+            text-align: center;
+          }
+
+          .input_center {
+            flex: 1;
+            height: 2.8rem;
+
+            input {
+              width: 100%;
+              height: 2.8rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .all_price{
+      .checkbox-ios{
+          top:.5rem;
+          margin-right: .4rem;
+      }
+      strong{
+          margin-left:.6rem;
+      }
+  }
+
+  .checkbox-ios.checkbox-disabled,
+  .item-ios.item-checkbox-disabled ion-label{
+    opacity: 1;
+  }
+}
