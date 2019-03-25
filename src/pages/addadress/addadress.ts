@@ -54,6 +54,10 @@ export class AddadressPage {
       address: this.addresslist.address
     }, (data) => {
       console.log(data);
+      var addAddress = JSON.parse(data['_body']);
+      if (addAddress.success) {
+        this.navCtrl.pop();
+      }
     })
 
   }
