@@ -19,7 +19,7 @@ import { StorageProvider } from '../../providers/storage/storage';
 })
 export class RegsterpasswordPage {
   public password = '';
-  public repassword=''
+  public repassword = ''
   public tel = '';
   public code = ''
   constructor(public navCtrl: NavController, public navParams: NavParams, public config: ConfigProvider, public httpService: HttpServiceProvider, public storage: StorageProvider) {
@@ -33,17 +33,25 @@ export class RegsterpasswordPage {
   }
   gologin() {
     // this.navCtrl.push(LoginPage);
-    var api = "/api/register";
-    console.log(this.password);
-    if (this.password == this.repassword) {
+    // console.log(this.password);
+    if (this.password != this.repassword) {
+      alert('确认密码和密码不一样')
+    } else if (this.password.length < 6) {
+      alert('密码长度不能小于6位');
+    } else {
       // this.storage.set('')'code':this.code,
-      this.httpService.postdata(api, { 'tel': this.tel, 'code': this.code,'password': this.password }, (data) => {
+      var api = "/api/register";
+      this.httpService.postdata(api, {
+        "tel": this.tel,
+        "code": this.code,
+        'password': this.password
+      }, (data) => {
         console.log(data);
         if (JSON.parse(data['_body']).success = true) {
           this.storage.set('username', JSON.parse(data['_body']).userinfo[0])
           // this.navCtrl.push(LoginPage);
           this.navCtrl.popToRoot();
-          // console.log()
+
         }
       })
 

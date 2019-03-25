@@ -21,7 +21,7 @@
       <div>综合</div>
     </div>
     <ion-list>
-      <ion-item *ngFor="let item of list">
+      <ion-item *ngFor="let item of list" [navPush]='ProductinfPage' [navParams]="{'id':item._id}">
         <ion-thumbnail item-left>
           <img src="{{config.apiUrl}}/{{item.pic}}" alt="">
         </ion-thumbnail>

@@ -96,13 +96,13 @@ export class ProductinfPage {
       this.storage.set('cart_data', storageData);
 
       // this.cartnum += this.num;
-      this.cartnum += json.product_num;
+      // this.cartnum += json.product_num;
     } else { //没有数据
       var tempArr = [];
       tempArr.push(json);
       this.storage.set('cart_data', tempArr);
     }
-    // this.cartnum += this.num;
+   this.cartnum += json.product_num;
     // this.storage.set('cart_data', storageData);
   }
 

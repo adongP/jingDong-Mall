@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { ProductinfPage } from '../productinf/productinf';
+
 import { Http, Jsonp } from '@angular/http';
 import { ConfigProvider } from '../../providers/config/config';
 import { HttpServiceProvider } from '../../providers/http-service/http-service'
@@ -17,6 +19,7 @@ import { HttpServiceProvider } from '../../providers/http-service/http-service'
   templateUrl: 'productlist.html',
 })
 export class ProductlistPage {
+  public ProductinfPage = ProductinfPage;
   public list = [];
   public cid;
   public num = 1;

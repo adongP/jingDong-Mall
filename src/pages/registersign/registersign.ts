@@ -21,15 +21,15 @@ export class RegistersignPage {
   public RegsterpasswordPage = RegsterpasswordPage;
   public tel = '';
   public code = '';
-  public num = 60;
+  public num = 60;  //倒计时
   public flag = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, public config: ConfigProvider, public httpService: HttpServiceProvider, public storage: StorageProvider) {
     // console.log(this.navParams);
     this.tel = this.navParams.data.tel;
     console.log(this.tel);
-    var code = this.navParams.data.code;
-    // this.code = this.navParams.data.code; //没有短信接口，验证码直接填入
-    console.log(code);
+    // var code = this.navParams.data.code;
+    this.code = this.navParams.data.code; //没有短信接口，验证码直接填入
+    console.log(this.code);
   }
 
   ionViewDidLoad() {
@@ -50,6 +50,8 @@ export class RegistersignPage {
       }
     }, 1000)
   }
+
+  // 验证码验证接口
   goregsterpasswordPage() {
     // this.navCtrl.push(RegsterpasswordPage);
     // console.log(this.code);
@@ -65,7 +67,7 @@ export class RegistersignPage {
       if (JSON.parse(data['_body']).success) {
         // 验证成功，保存手机号
         this.storage.set('tel', this.tel);
-        // this.storage.set('code', this.code);
+        this.storage.set('code', this.code);
         this.navCtrl.push(RegsterpasswordPage);
       } else {
         alert('验证错误')
@@ -73,14 +75,19 @@ export class RegistersignPage {
     })
 
   }
+  // 发送验证码
   sendcode() {
-    this.flag = true;
-    this.num = 60;
-    this.cutdow();
+
 
     var api = "/api/sendCode";
     this.httpService.postdata(api, { 'tel': this.tel }, (data) => {
+      var Scode = JSON.parse(data['_body'])
       console.log(data);
+      if (Scode.seccess) {
+        this.flag = true;
+        this.num = 60;
+        this.cutdow();
+      }
     })
   }
 }
